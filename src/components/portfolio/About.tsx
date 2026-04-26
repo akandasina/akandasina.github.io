@@ -1,7 +1,6 @@
 import { GraduationCap, Sparkles, Users } from "lucide-react";
 
-// Pointing directly to the file you uploaded to the public folder
-const profileImg = "/DSC00311.jpg"; // Double check if it is .jpg or .png in your public folder!
+const profileImg = "/DSC00311.jpg";
 
 const stats = [
   { icon: GraduationCap, label: "GPA in Computer Science", value: "3.9" },
