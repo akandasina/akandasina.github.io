@@ -1,6 +1,6 @@
 import { GraduationCap, Sparkles, Users } from "lucide-react";
 
-const profileImg = "/DSC00311.jpg";
+const profileImg = null;
 
 const stats = [
   { icon: GraduationCap, label: "GPA in Computer Science", value: "3.9" },
