@@ -5,9 +5,6 @@ const profileImg = "/DSC00311.jpg"; // Double check if it is .jpg or .png in you
 
 const stats = [
   { icon: GraduationCap, label: "GPA in Computer Science", value: "3.9" },
-
-const stats = [
-  { icon: GraduationCap, label: "GPA in Computer Science", value: "3.9" },
   { icon: Users, label: "Years in hospitality leadership", value: "4+" },
   { icon: Sparkles, label: "Goal", value: "AI Engineer" },
 ];
