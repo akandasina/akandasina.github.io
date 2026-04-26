@@ -9,15 +9,15 @@ export function Contact() {
     <section id="contact" className="scroll-mt-20 py-24">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="Contact"
-          title="Let's build something useful."
-          description="Open to internships, collaborations, and conversations about climate tech, mobile, or AI."
-        />
+  eyebrow="Contact"
+  title="Let's build something useful."
+  description="Currently looking for internships and collaborations at the intersection of AI and sustainability. If you're building tech for good, let's talk."
+/>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-3">
             <a
-              href="mailto:akanda@example.com"
+              href="mailto:akandasine@outlook.com"
               className="group flex items-center gap-4 rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-glow"
             >
               <span className="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/30">
@@ -26,7 +26,7 @@ export function Contact() {
               <div>
                 <p className="text-xs uppercase tracking-wide text-muted-foreground">Email</p>
                 <p className="font-mono text-sm text-foreground group-hover:text-primary">
-                  akanda@example.com
+                  akandasine@outlook.com
                 </p>
               </div>
             </a>
