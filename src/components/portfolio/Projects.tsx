@@ -1,56 +1,34 @@
 import { ArrowUpRight, Smartphone, Satellite, CloudRain, Leaf, Globe2 } from "lucide-react";
 import { SectionHeading } from "./About";
 
-const projects = [
+const projects: Project[] = [
   {
-    icon: Smartphone,
-    title: "KapKap App",
-    tag: "Mobile · Sustainability",
-    description:
-      "A cross-platform mobile app built with Flutter and Firebase designed to reduce food waste by connecting local communities with surplus food in real time.",
-    stack: ["Flutter", "Dart", "Firebase"],
-    accent: "primary" as const,
-    link: "#",
+    title: "KapKap: Food Rescue App",
+    description: "A cross-platform mobile app built with Flutter and Firebase, optimized for real-time surplus discovery to minimize urban food waste.",
+    image: "/kapkap.png", 
+    tags: ["Flutter", "Firebase", "Dart", "Mobile Dev"],
+    github: "https://github.com/akandasina",
   },
   {
-    icon: Leaf,
-    title: "NDVI Monitoring — New Jersey",
-    tag: "Geospatial · Vegetation",
-    description:
-      "Interactive cloud tool to visualize NDVI vegetation health across New Jersey using the MODIS/061/MOD13Q1 dataset, with time series charts from 2000 to present.",
-    stack: ["Google Earth Engine", "MODIS", "JavaScript"],
-    accent: "primary" as const,
-    link: "https://ee-akandasina20.projects.earthengine.app/view/njnvdi",
+    title: "Vegetation Health (NDVI) Monitoring",
+    description: "Advanced geospatial tool utilizing time series analysis of satellite data to track ecological shifts and vegetation health.",
+    image: "/ndvi.png",
+    tags: ["GEE", "JavaScript", "Remote Sensing", "GIS"],
+    github: "https://github.com/akandasina",
   },
   {
-    icon: Satellite,
-    title: "Groundwater Monitoring — NJ",
-    tag: "Geospatial · Hydrology",
-    description:
-      "Cloud-based app visualizing Total Water Storage (TWS) over New Jersey using GRACE satellite data, with dynamic maps and time series from 2002–2017.",
-    stack: ["Google Earth Engine", "GRACE", "JavaScript"],
-    accent: "blue" as const,
-    link: "https://ee-akandasina20.projects.earthengine.app/view/njgroundwater",
+    title: "Groundwater Stress Analysis",
+    description: "Visualizing hydrological stress through GRACE satellite gravity anomalies to provide insights into water depletion.",
+    image: "/groundwater.png",
+    tags: ["GEE", "Python", "Hydrology", "Data Visualization"],
+    github: "https://github.com/akandasina",
   },
   {
-    icon: CloudRain,
-    title: "Historical Rainfall Portal — NJ",
-    tag: "Data Visualization",
-    description:
-      "Precipitation mapping tool built on the ECMWF/ERA5/DAILY dataset, enabling exploration of multi-decade rainfall trends across New Jersey from 1979–2020.",
-    stack: ["Google Earth Engine", "ERA5", "JavaScript"],
-    accent: "primary" as const,
-    link: "https://ee-akandasina20.projects.earthengine.app/view/njrain",
-  },
-  {
-    icon: Globe2,
-    title: "Climate Change Monitoring — Turkey",
-    tag: "Climate · Time Series",
-    description:
-      "Application to visualize monthly precipitation across Turkey. Users can click any point to generate a time series chart, offering insights into regional climate variation.",
-    stack: ["Google Earth Engine", "JavaScript"],
-    accent: "blue" as const,
-    link: "https://ee-akandasina20.projects.earthengine.app/view/climatechange",
+    title: "SWOT Satellite Modeling",
+    description: "Hydrological modeling of the Saint John River using SWOT data to enhance flood prediction and water resource management.",
+    image: "/swot.png",
+    tags: ["Climate Tech", "Modeling", "Environmental Data"],
+    github: "https://github.com/akandasina",
   },
 ];
 
