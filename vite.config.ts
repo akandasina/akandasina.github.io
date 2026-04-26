@@ -8,7 +8,9 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  base: "/",
+  // Since your repo is now 'akandasina.github.io', 
+  // your site is at the root. We use "/" instead of the old repo name.
+  base: "/", 
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
