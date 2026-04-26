@@ -1,3 +1,14 @@
+interface Project {
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  tags: string[];
+  links: {
+    github: string;
+    demo?: string;
+  };
+}
 import { ArrowUpRight, Smartphone, Satellite, CloudRain, Leaf, Globe2 } from "lucide-react";
 import { SectionHeading } from "./About";
 
