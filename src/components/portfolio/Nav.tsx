@@ -1,100 +1,81 @@
-import { useEffect, useState } from "react";
-import { FileText, Leaf } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Leaf } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#hobbies", label: "Hobbies" },
-  { href: "#contact", label: "Contact" },
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Hobbies", href: "#hobbies" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
+    <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border/60 bg-background/80 backdrop-blur-xl"
-          : "bg-transparent",
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        isScrolled 
+          ? "border-b border-border bg-background/80 backdrop-blur-md py-3" 
+          : "bg-transparent py-5"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="#top" className="group flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/30">
-            <Leaf className="h-4 w-4" />
-          </span>
-          <span className="font-display text-sm font-semibold tracking-tight">
-            Akanda<span className="text-primary">.</span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
+        <a href="#top" className="flex items-center gap-2 group">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/30 transition-transform group-hover:scale-110">
+            <Leaf className="h-5 w-5" />
+          </div>
+          <span className="font-display text-lg font-bold tracking-tight">
+            Akanda Sina <span className="text-primary">Kilicarslan</span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {links.map((l) => (
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
             <a
-              key={l.href}
-              href={l.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
-              {l.label}
+              {link.name}
             </a>
           ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/20 animate-glow-pulse"
-          >
-            <FileText className="h-4 w-4" />
-            Resume
-          </a>
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden rounded-md border border-border px-3 py-2 text-sm"
-          >
-            Menu
-          </button>
         </div>
+
+        {/* Mobile Toggle */}
+        <button 
+          className="md:hidden text-foreground"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X /> : <Menu />}
+        </button>
       </div>
 
-      {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur">
-          <nav className="mx-auto flex max-w-6xl flex-col px-6 py-3">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-background border-b border-border p-6 md:hidden flex flex-col gap-4 animate-in fade-in slide-in-from-top-2">
+          {navLinks.map((link) => (
             <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-sm font-medium text-primary"
+              key={link.name}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-lg font-medium text-foreground hover:text-primary"
             >
-              <FileText className="h-4 w-4" />
-              Resume
+              {link.name}
             </a>
-          </nav>
+          ))}
         </div>
       )}
-    </header>
+    </nav>
   );
 }
