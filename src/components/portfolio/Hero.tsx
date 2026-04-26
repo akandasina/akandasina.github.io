@@ -72,7 +72,7 @@ export function Hero() {
               <Github className="h-4 w-4" />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://linkedin.com/in/akandasina"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
