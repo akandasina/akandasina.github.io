@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Leaf } from "lucide-react";
-import { cn } from "@/lib/utils";
+
+// Helper function to handle classes since we removed the 'cn' utility for simplicity
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -22,20 +26,20 @@ export function Nav() {
 
   return (
     <nav
-      className={cn(
+      className={classNames(
         "fixed top-0 z-50 w-full transition-all duration-300",
         isScrolled 
-          ? "border-b border-border bg-background/80 backdrop-blur-md py-3" 
+          ? "border-b border-white/10 bg-black/80 backdrop-blur-md py-3" 
           : "bg-transparent py-5"
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <a href="#top" className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/30 transition-transform group-hover:scale-110">
+        <a href="#top" className="flex items-center gap-2 group text-white decoration-transparent">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/30 transition-transform group-hover:scale-110">
             <Leaf className="h-5 w-5" />
           </div>
-          <span className="font-display text-lg font-bold tracking-tight">
-            Akanda Sina <span className="text-primary">Kilicarslan</span>
+          <span className="font-sans text-lg font-bold tracking-tight">
+            Akanda Sina <span className="text-emerald-500">Kilicarslan</span>
           </span>
         </a>
 
@@ -45,7 +49,7 @@ export function Nav() {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-sm font-medium text-gray-400 transition-colors hover:text-emerald-500 decoration-transparent"
             >
               {link.name}
             </a>
@@ -54,7 +58,7 @@ export function Nav() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-foreground"
+          className="md:hidden text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
@@ -63,13 +67,13 @@ export function Nav() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-background border-b border-border p-6 md:hidden flex flex-col gap-4 animate-in fade-in slide-in-from-top-2">
+        <div className="absolute top-full left-0 w-full bg-black border-b border-white/10 p-6 md:hidden flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-medium text-foreground hover:text-primary"
+              className="text-lg font-medium text-white hover:text-emerald-500 decoration-transparent"
             >
               {link.name}
             </a>
