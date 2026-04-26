@@ -21,6 +21,11 @@ jobs:
         run: |
           bun install
           bun run build
+          
+          # Fix for TanStack Start: Move hidden client files to the surface
+          if [ -d "./dist/client" ]; then cp -r ./dist/client/* ./dist/; fi
+          if [ -f "./dist/_shell.html" ] && [ ! -f "./dist/index.html" ]; then mv ./dist/_shell.html ./dist/index.html; fi
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
