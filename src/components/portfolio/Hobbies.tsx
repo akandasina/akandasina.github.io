@@ -9,18 +9,18 @@ import { SectionHeading } from "./About";
 type Photo = { h: number; hue: number; label: string; src?: string };
 
 const photos: Photo[] = [
-  { h: 280, hue: 158, label: "City lines" },
-  { h: 380, hue: 220, label: "Forest path" },
-  { h: 240, hue: 30, label: "Golden hour" },
-  { h: 320, hue: 190, label: "Coastline" },
-  { h: 360, hue: 280, label: "Night street" },
-  { h: 260, hue: 130, label: "Wildflowers" },
-  { h: 300, hue: 200, label: "Rooftop" },
-  { h: 340, hue: 90, label: "Trail" },
-  { h: 290, hue: 340, label: "Alleyway" },
-  { h: 360, hue: 50, label: "Harbor" },
-  { h: 250, hue: 170, label: "Park bench" },
-  { h: 320, hue: 250, label: "Skyline" },
+  { h: 280, hue: 158, label: "Urban Exploration", src: "/akanda-kilicarslan-OicNvF69wYM-unsplash.jpg" },
+  { h: 380, hue: 220, label: "Nature Path", src: "/akanda-kilicarslan-H7LSySLGj-k-unsplash.jpg" },
+  { h: 240, hue: 30, label: "Golden Hour", src: "/akanda-kilicarslan-2nh34yJAZIY-unsplash.jpg" },
+  { h: 320, hue: 190, label: "Perspective", src: "/akanda-kilicarslan-3k4J5ul0d-4-unsplash.jpg" },
+  { h: 360, hue: 280, label: "Street Night", src: "/akanda-kilicarslan-_FWvNY0y76c-unsplash.jpg" },
+  { h: 260, hue: 130, label: "Detail", src: "/akanda-kilicarslan-cX2ifNIH2VA-unsplash (2).jpg" },
+  { h: 300, hue: 200, label: "Atmosphere", src: "/akanda-kilicarslan-syAht_KxcO8-unsplash.jpg" },
+  { h: 340, hue: 90, label: "Landscape", src: "/DSC05998.jpg" },
+  { h: 290, hue: 340, label: "Architecture", src: "/DSC09938.jpg" },
+  { h: 360, hue: 50, label: "Moment", src: "/DSC01822.jpg" },
+  { h: 250, hue: 170, label: "Light", src: "/DSC04960.jpg" },
+  { h: 320, hue: 250, label: "Shadows", src: "/DSC05650.jpg" },
 ];
 
 const interests = [
