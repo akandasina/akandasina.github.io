@@ -1,8 +1,7 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  // wrangler.jsonc
-"name": "akandaportfolio",
-  "compatibility_date": "2025-09-24",
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "akandaportfolio",
+  "compatibility_date": "2026-04-26",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  "main": "@tanstack/react-start/server-entry"
 }
