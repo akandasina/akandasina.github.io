@@ -1,4 +1,4 @@
-import { experience } from "../data/site";
+import { experience, honors } from "../data/site";
 import { SectionHead } from "./SectionHead";
 
 export function Experience() {
@@ -16,6 +16,19 @@ export function Experience() {
           </li>
         ))}
       </ul>
+
+      <div className="honors">
+        <span className="label reveal">Honors &amp; recognition</span>
+        <ul className="honors__list">
+          {honors.map((h, i) => (
+            <li key={h.title} className="honors__item reveal">
+              <span className="honors__num mono">{String(i + 1).padStart(2, "0")}</span>
+              <span className="honors__title">{h.title}</span>
+              <span className="honors__detail">{h.detail}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

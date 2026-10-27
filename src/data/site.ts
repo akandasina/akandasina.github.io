@@ -27,8 +27,8 @@ export const about = {
   ],
   stats: [
     { value: "3.9", label: "GPA at Hudson County CC" },
-    { value: "4+", label: "Years leading hospitality teams" },
-    { value: "PTK", label: "Phi Theta Kappa · Dean's List" },
+    { value: "1.6M+", label: "Views on my Unsplash photos" },
+    { value: "18K+", label: "Photo downloads on Unsplash" },
   ],
 };
 
@@ -38,7 +38,6 @@ export type Project = {
   description: string;
   points: string[];
   stack: string[];
-  image: string;
   // Link each project to its own repo or live demo when you have one.
   link: string;
   linkLabel: string;
@@ -56,7 +55,6 @@ export const projects: Project[] = [
       "Tracks the carbon footprint each user has saved",
     ],
     stack: ["Flutter", "Dart", "Firebase"],
-    image: "/projects/kapkap.webp",
     link: "https://github.com/akandasina",
     linkLabel: "GitHub",
   },
@@ -71,7 +69,6 @@ export const projects: Project[] = [
       "Interactive app published with Google Earth Engine",
     ],
     stack: ["Earth Engine", "JavaScript", "GIS"],
-    image: "/projects/ndvi.webp",
     link: "https://github.com/akandasina",
     linkLabel: "GitHub",
   },
@@ -86,7 +83,6 @@ export const projects: Project[] = [
       "Built with guidance from a researcher at Stevens' I-SMART Lab",
     ],
     stack: ["Earth Engine", "Python", "Data viz"],
-    image: "/projects/groundwater.webp",
     link: "https://github.com/akandasina",
     linkLabel: "GitHub",
   },
@@ -100,7 +96,6 @@ export const projects: Project[] = [
       "Aims to improve flood prediction and water management",
     ],
     stack: ["SWOT", "Modeling", "Python"],
-    image: "/projects/swot.webp",
     link: "https://github.com/akandasina",
     linkLabel: "GitHub",
   },
@@ -117,7 +112,7 @@ export const experience = [
     period: "2023 — 2026",
     title: "Computer Science",
     place: "Hudson County Community College",
-    note: "Dean's List · Phi Theta Kappa",
+    note: "3.9 GPA",
   },
   {
     period: "Ongoing",
@@ -139,6 +134,14 @@ export const experience = [
   },
 ];
 
+// Honors and recognition — shown under Experience
+export const honors = [
+  { title: "Dean's List", detail: "Hudson County Community College" },
+  { title: "Phi Theta Kappa", detail: "International honor society for two-year colleges" },
+  { title: "Top 10% on Unsplash", detail: "By downloads — 18K+ downloads and 1.6M+ views" },
+  { title: "Featured photograph", detail: "\"Cozy Corner for Coffee Lovers\" in Unsplash's Photos feature, 500K+ views" },
+];
+
 export const skills = [
   { group: "Languages", items: ["Python", "Dart", "JavaScript", "TypeScript", "C++", "SQL"] },
   { group: "Frameworks", items: ["Flutter", "React", "Firebase", "Vite"] },
@@ -147,3 +150,28 @@ export const skills = [
 ];
 
 export const interests = ["Photography", "Guitar & accordion", "Vinyl collecting", "Soccer"];
+
+// Shown large at the top of the photo section. `file` is the photo's file name
+// (without extension) inside src/assets/photos/.
+export const featuredPhoto = {
+  file: "featured-cozy-corner",
+  title: "Cozy Corner for Coffee Lovers",
+  note: "Featured in Unsplash Photos · 500K+ views",
+  place: "Hey Coffee People, Hoboken",
+  // Your Unsplash profile, e.g. "https://unsplash.com/@yourname"
+  unsplashUrl: "https://unsplash.com/@akroxas",
+};
+
+// Optional nicer captions, keyed by photo file name (without extension).
+// Photos not listed here get a caption from their file name.
+export const photoCaptions: Record<string, string> = {
+  "01-manhattan-skyline": "Manhattan skyline",
+  "02-tower-bridge-london": "Tower Bridge, London",
+  "04-empire-state-at-night": "Empire State at night",
+  "09-brooklyn-bridge": "Brooklyn Bridge",
+  "10-new-york-ave": "New York Ave",
+  "11-angel-of-the-waters-central-park": "Angel of the Waters, Central Park",
+  "13-london-eye": "London Eye",
+  "18-cappadocia-in-snow": "Cappadocia in snow",
+  "20-toward-st-pauls": "Toward St Paul's",
+};

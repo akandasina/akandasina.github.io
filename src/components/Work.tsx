@@ -1,17 +1,25 @@
-import { useRef, useState, type MouseEvent } from "react";
+import { useRef, useState } from "react";
 import { projects } from "../data/site";
 import { SectionHead } from "./SectionHead";
 
 export function Work() {
-  const [active, setActive] = useState<number | null>(null);
   const [open, setOpen] = useState<number | null>(0);
-  const floatRef = useRef<HTMLDivElement>(null);
+  const items = useRef<(HTMLLIElement | null)[]>([]);
 
-  // The preview image follows the cursor on desktop
-  const onMove = (e: MouseEvent) => {
-    const el = floatRef.current;
-    if (!el) return;
-    el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+  const toggle = (i: number) => {
+    const next = open === i ? null : i;
+    setOpen(next);
+    if (next === null) return;
+    // Once the previous panel has closed, bring the opened project to the top of the screen
+    window.setTimeout(() => {
+      const el = items.current[i];
+      if (!el) return;
+      const top = el.getBoundingClientRect().top;
+      if (top < 80 || top > window.innerHeight * 0.45) {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: window.scrollY + top - 80, behavior: reduce ? "auto" : "smooth" });
+      }
+    }, 450);
   };
 
   return (
@@ -19,20 +27,22 @@ export function Work() {
       <div className="wrap">
         <SectionHead index="02" label="Selected work" title="Things I've built." />
 
-        <ol className="work" onMouseMove={onMove} onMouseLeave={() => setActive(null)}>
+        <ol className="work">
           {projects.map((p, i) => {
             const isOpen = open === i;
             return (
               <li
                 key={p.title}
+                ref={(el) => {
+                  items.current[i] = el;
+                }}
                 className={`work__item reveal ${isOpen ? "is-open" : ""}`}
-                onMouseEnter={() => setActive(i)}
               >
                 <button
                   className="work__row"
                   aria-expanded={isOpen}
                   aria-controls={`work-${i}`}
-                  onClick={() => setOpen(isOpen ? null : i)}
+                  onClick={() => toggle(i)}
                 >
                   <span className="work__num mono">{String(i + 1).padStart(2, "0")}</span>
                   <span className="work__title">{p.title}</span>
@@ -40,9 +50,8 @@ export function Work() {
                   <span className="work__plus" aria-hidden="true" />
                 </button>
 
-                <div id={`work-${i}`} className="work__panel" role="region">
+                <div id={`work-${i}`} className="work__panel" role="region" aria-label={p.title}>
                   <div className="work__inner">
-                    <img className="work__thumb" src={p.image} alt="" loading="lazy" />
                     <div className="work__text">
                       <p className="work__desc">{p.description}</p>
                       <ul className="work__points">
@@ -68,12 +77,6 @@ export function Work() {
             );
           })}
         </ol>
-      </div>
-
-      <div ref={floatRef} className={`work__float ${active !== null ? "is-on" : ""}`} aria-hidden="true">
-        {projects.map((p, i) => (
-          <img key={p.image} src={p.image} alt="" className={active === i ? "is-on" : ""} />
-        ))}
       </div>
     </section>
   );

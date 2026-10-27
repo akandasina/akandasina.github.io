@@ -686,23 +686,15 @@ em {
   min-height: 0;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 64px minmax(0, 3fr) minmax(0, 5fr) minmax(0, 3fr);
+  grid-template-columns: 64px minmax(0, 7fr) minmax(0, 3fr);
   gap: 24px;
+}
+.work__text {
+  grid-column: 2;
+  max-width: 760px;
 }
 .work__inner > * {
   margin-bottom: clamp(32px, 4vw, 56px);
-}
-.work__thumb {
-  grid-column: 2;
-  width: 100%;
-  max-width: 220px;
-  aspect-ratio: 1;
-  object-fit: contain;
-  filter: grayscale(1);
-  transition: filter 0.6s var(--ease);
-}
-.work__item:hover .work__thumb {
-  filter: none;
 }
 .work__desc {
   font-family: var(--serif);
@@ -748,43 +740,6 @@ em {
   font-size: 11px;
 }
 
-/* Floating preview that follows the cursor */
-.work__float {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 40;
-  width: 260px;
-  height: 260px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.35s var(--ease);
-  display: none;
-}
-.work__float img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transform: scale(0.85) rotate(-4deg);
-  transition:
-    opacity 0.35s var(--ease),
-    transform 0.6s var(--ease);
-}
-.work__float img.is-on {
-  opacity: 1;
-  transform: none;
-}
-.work__float.is-on {
-  opacity: 1;
-}
-@media (hover: hover) and (min-width: 1000px) {
-  .work__float {
-    display: block;
-  }
-}
 
 /* ───────────────────────── Experience ───────────────────────── */
 
@@ -822,6 +777,38 @@ em {
   color: var(--muted);
 }
 
+.honors {
+  margin-top: clamp(64px, 8vw, 112px);
+}
+.honors__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+.honors__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--fg);
+}
+.honors__num {
+  font-size: 11px;
+  color: var(--muted);
+}
+.honors__title {
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.honors__detail {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 30ch;
+}
+
 /* ───────────────────────── Skills ───────────────────────── */
 
 .skills {
@@ -855,6 +842,38 @@ em {
   color: var(--muted);
 }
 
+.featured {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 24px;
+  align-items: end;
+  margin-top: clamp(48px, 6vw, 88px);
+}
+.featured img {
+  width: 100%;
+  height: auto;
+}
+.featured figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+.featured__title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1.05;
+}
+.featured__note {
+  color: var(--muted);
+  font-size: 15px;
+}
+.featured__link {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
 .gallery {
   margin-top: clamp(48px, 6vw, 88px);
   columns: 3;
@@ -867,11 +886,17 @@ em {
 .gallery__item img {
   width: 100%;
   height: auto;
-  filter: grayscale(1);
   transition: filter 0.8s var(--ease);
 }
-.gallery__item:hover img {
-  filter: none;
+/* On desktop the photos rest in black & white and bloom into colour on hover;
+   phones (no hover) always see them in colour */
+@media (hover: hover) {
+  .gallery__item img {
+    filter: grayscale(1);
+  }
+  .gallery__item:hover img {
+    filter: none;
+  }
 }
 .gallery__item figcaption {
   margin-top: 10px;
@@ -1045,19 +1070,16 @@ em {
   }
 
   .work__inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
-  .work__thumb {
-    grid-column: 1;
-    max-width: 160px;
-  }
-  .work__text {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
+  .work__text,
   .work__aside {
-    grid-column: 1 / -1;
-    grid-row: 3;
+    grid-column: 1;
+  }
+
+  .honors__list {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .xp__period {
@@ -1081,6 +1103,9 @@ em {
 
   .gallery {
     columns: 2;
+  }
+  .featured {
+    grid-template-columns: 1fr;
   }
 
   .contact__side,
@@ -1155,6 +1180,10 @@ em {
   }
   .skills__col li {
     font-size: 20px;
+  }
+
+  .honors__list {
+    grid-template-columns: 1fr;
   }
 
   .gallery {
