@@ -661,7 +661,7 @@ em {
 .work__plus::after {
   transform: rotate(90deg);
 }
-.is-open .work__plus {
+.work__item[data-open="true"] .work__plus {
   transform: rotate(45deg);
 }
 
@@ -679,7 +679,7 @@ em {
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.7s var(--ease);
 }
-.is-open .work__panel {
+.work__item[data-open="true"] .work__panel {
   grid-template-rows: 1fr;
 }
 .work__inner {

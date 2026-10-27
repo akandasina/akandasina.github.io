@@ -36,7 +36,10 @@ export function Work() {
                 ref={(el) => {
                   items.current[i] = el;
                 }}
-                className={`work__item reveal ${isOpen ? "is-open" : ""}`}
+                className="work__item reveal"
+                // open/closed lives in an attribute, not the class list, so React
+                // re-renders never wipe the "is-in" class the scroll fade-in adds
+                data-open={isOpen}
               >
                 <button
                   className="work__row"
