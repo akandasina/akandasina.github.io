@@ -120,7 +120,6 @@ export function Contact() {
         </div>
         <div className="footer__bar wrap mono">
           <span>© {new Date().getFullYear()} {person.firstName} {person.lastName}</span>
-          <span>Built with React</span>
           <a className="link-line" href="#top">
             Back to top ↑
           </a>
